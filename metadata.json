@@ -1,0 +1,10 @@
+{
+  "name": "Remix: RideShare Social",
+  "description": "A full-stack ride-sharing social platform combining driver and passenger matching, real-time routing, chat communication, and secure payment processing.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
