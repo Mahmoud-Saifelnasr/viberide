@@ -126,7 +126,7 @@ export default function DevOpsDashboard() {
   useEffect(() => {
     if (devopsToken) {
       fetchStatus();
-      const interval = setInterval(() => fetchStatus(), 3000); // Polling every 3 seconds for active DevOps telemetry
+      const interval = setInterval(() => fetchStatus(), 3000);
       return () => clearInterval(interval);
     } else {
       setLoading(false);
@@ -370,7 +370,6 @@ export default function DevOpsDashboard() {
     );
   }
 
-  // Active / ongoing rides to inspect
   const activeRidesList = rides.filter(r => ['requested', 'accepted', 'ongoing'].includes(r.status));
 
   return (
@@ -622,13 +621,12 @@ export default function DevOpsDashboard() {
                 <Compass className="w-8 h-8 mx-auto text-slate-300 animate-spin mb-2" />
                 <p className="text-xs text-slate-500 font-bold">No active rides are being run currently</p>
                 <p className="text-[10px] text-slate-400 mt-1 font-mono">
-                  Login as Sarah Connor or John Doe, and request a ride to see live GPS tracking teleport controls!
+                  Login as Sarah Connor or Carlos Santana, and request a ride to see live GPS tracking teleport controls!
                 </p>
               </div>
             ) : (
               <div className="space-y-3 max-h-72 overflow-y-auto pr-1">
                 {activeRidesList.map((ride) => {
-                  const driverLocStr = 'lat' in ride ? '⚡ En Route' : 'Requested';
                   return (
                     <div key={ride.id} className="border border-slate-150 rounded-2xl p-4 bg-slate-50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                       <div className="space-y-1">

@@ -200,22 +200,22 @@ export default function App() {
 
         {/* Main Body */}
         <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
-          {activeTab === 'dashboard' ? (
+          {activeTab === 'dashboard' && currentUser ? (
             currentUser.role === 'passenger' ? (
               <PassengerDashboard currentUser={currentUser} authToken={authToken} />
             ) : (
               <DriverDashboard currentUser={currentUser} authToken={authToken} onProfileUpdate={handleProfileUpdate} />
             )
-          ) : activeTab === 'profile' ? (
+          ) : activeTab === 'profile' && currentUser ? (
             <ProfileView 
               currentUser={currentUser} 
               authToken={authToken} 
               onLogout={handleLogout} 
               onProfileUpdate={handleProfileUpdate} 
             />
-          ) : !currentUser ? (
+          ) : activeTab === 'devops' && !currentUser ? (
             <DevOpsDashboard />
-          ) : (
+          ) : activeTab === 'devops' && currentUser ? (
             <div className="bg-white border border-rose-100 p-8 rounded-3xl text-center space-y-4 shadow-sm max-w-md mx-auto my-12">
               <div className="w-12 h-12 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-500 mx-auto font-black text-lg">!</div>
               <h3 className="text-sm font-bold text-slate-900 font-sans uppercase tracking-tight">Access Prohibited</h3>
@@ -223,7 +223,7 @@ export default function App() {
                 Passenger and driver user accounts are strictly prohibited from accessing administrative DevOps systems. Please sign out from your user account to access the DevOps Gateway.
               </p>
             </div>
-          )}
+          ) : null}
         </main>
 
         {/* Footer bar */}
